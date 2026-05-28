@@ -244,7 +244,7 @@ class BasicPermissionCheck implements DiagnosticPipe
 				// @codeCoverageIgnoreStart
 				$this->numOwnerIssues++;
 				if ($this->numOwnerIssues <= self::MAX_ISSUE_REPORTS_PER_TYPE) {
-					$data[] = DiagnosticData::warn(sprintf('%s is owned by group %s, but should be owned by one out of %s', $this->anonymize($path), $owning_group_name, $this->groupNames), self::class);
+					$data[] = DiagnosticData::warn(sprintf('%s has group %s, but should have group %s', $this->anonymize($path), $owning_group_name, implode(' or ', $this->groupNames)), self::class);
 				}
 				// @codeCoverageIgnoreEnd
 			}
